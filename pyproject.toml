@@ -1,0 +1,61 @@
+
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "credit-risk-prediction"
+version = "0.1.0"
+description = "End-to-end machine learning project for credit default prediction."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "MIT" }
+authors = [
+    { name = "Glaucia Schnoeller" }
+]
+
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "openpyxl",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "scikit-learn>=1.5",
+    "imbalanced-learn",
+    "xgboost",
+    "lightgbm",
+    "catboost",
+    "shap",
+    "mlflow",
+    "ucimlrepo",
+    "fastapi",
+    "uvicorn[standard]",
+    "joblib",
+    "pydantic"
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter",
+    "ipykernel",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "pre-commit"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "api*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
